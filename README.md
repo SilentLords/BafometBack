@@ -35,7 +35,7 @@ Response
       'status': bool,
       'mes': string
     }  
-####  Confirm Email OTP
+####  Registrate new user
 Request
 
     Method POST

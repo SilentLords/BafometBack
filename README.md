@@ -1,55 +1,135 @@
-# django-nginx-postgres-docker
-A Docker Compose starter kit with Nginx, Django, Gunicorn, and Postgres database. You can use this as a template to build out your own Django application for development or production. The Postgres data is saved locally in the `postgres` directory, and any changes saved to the database while the app is running will persist.  Static and media files are configured to be served by Nginx, and stored locally in the `static_volume` and `media_volume` directories.
+# API Bafomet Backend
 
-## Nginx configuration
-The default Nginx configuration file can be found at`nginx/djangoapp.conf`.  It's set to run the site for local development at http://localhost:8000
+## Base url `http://bafomet.wellbe.club`
 
-## Postgres configuration
-Default Postgres setting can be found in `config/db/database1_env`. The Postgres Docker image will automatically create a database with these settings when the container is started. We use `database1` everywhere for default values, but you can change these values to whatever suits you:
+## Аунтефикация
 
-    POSTGRES_USER=database1_role  
-    POSTGRES_PASSWORD=database1_password  
-    POSTGRES_DB=database1
+### Регистрация
+#### Send Confirm email
+Request
 
-If you change these values, you must also update the DATABASES code block in the `settings.py` file in the Django application
+    Method POST
+    api/v1/users/registrate/send_email/
+    {
+      'email': string
+    }
+Response
 
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'database1',
-        'USER': 'database1_role',
-        'PASSWORD': 'database1_password',
-        'HOST': 'database1',  # <-- IMPORTANT: same name as docker-compose service!
-        'PORT': '5432',
-        }
+    {
+      'status': bool,
+      'mes': string
+    }  
+####  Confirm Email OTP
+Request
+
+    Method POST
+    api/v1/users/registrate/confirm_email/
+    {
+      'email': string,
+      'otp': string
+    }
+Response
+
+    {
+      'status': bool,
+      'mes': string
+    }  
+####  Confirm Email OTP
+Request
+
+    Method POST
+    api/v1/users/registrate/me/
+    {
+      'email': string,
+      'name': string,
+      'password': string
+    }
+Response
+
+    {
+      'status': bool,
+      'detail': string
+    }  
+
+### Авторизация
+#### Get Access and Refresh Tokens (Login)
+Request
+
+    Method POST
+    /v1/users/auth/token/
+    {
+      'email': string,
+      'password': string
+    }
+Response
+
+    {
+      'access': string,
+      'refresh': string
+    }  
+#### Get Access Token by refresh (Relogin)
+Request
+
+    Method POST
+    /v1/users/auth/token/refresh/
+    {
+      'refresh': string,
+    }
+Response
+
+    {
+      'access': string,
+    }  
+
+
+## Поиск с 2GIS API
+
+### Поиск магазинов вокруг геолокации
+Request
+
+    Method POST
+    /v1/places/place/
+    {
+      # City_id or cords required
+      'city_id': 'string', - not required
+      'cords': [float, float], - not required
+      'search_query':
+      {
+        -params as 2gis_api ('q' : ' КОфе')
+      }  
+    }
+Response
+
+    {
+      'status': bool, 
+      'items': [{with }]
     }
 
-And match the container name in the `docker-compose.yml` file for the Postgres container.
+### Поиск магазинов в городе
+Request
 
-    database1:  # <-- IMPORTANT: same name as in Djano settings.py, otherwise Django won't find the database!
-    image: postgres:11
-    container_name: database1
-    env_file:  # <-- match values to Djano settings.py
-      - config/db/database1_env
-    networks:
-      - database1_network  
-    volumes:
-      - ./postgres/data:/var/lib/postgresql/data # <-- bind the database to local directory
+    Method POST
+    /v1/users/auth
+Response
 
-## Install Instructions
-Prerequisite: You need to have Docker installed on the system where you'll be running this app. [Get Docker](https://docs.docker.com/install/)
+    Access-token
 
-1. Using your command line interface, `cd` to the cloned directory containing the docker-compose.yml file.
-2. Run `docker-compose build` to download and build the required Docker images.
-3. Run `docker-compose up -d` to start the Django application (the `-d` flag starts the containers as background daemons to they will continue to run if the terminal session is ended).
-4. The first time the application is run, you need to execute the usual Django management commands to perform database migrations, create a super user, and collect static files:
-    1. SSH to the Django container by running `docker exec -it djangoapp bash`. Now you're inside the Django container.
-    2. Run `cd starterkit`
-    3. Run `./manage.py migrate`
-    4. Run `./manage.py createsuperuser`
-    5. Run `./manage.py collectstatic`
-    6. Run `exit` to leave the container     
-5. Django site up! http://localhost:8000 
-6. To stop the application, run `docker-compose down`    
+## Работа с личным кабинетом
 
+### Получить избранные магазины пользователя
+Request
 
+    Method POST
+    /v1/users/auth
+Response
+
+    Access-token
+
+### Добавить магазин в избранное
+Request
+
+    Method POST
+    /v1/users/auth
+Response
+
+    Access-token    

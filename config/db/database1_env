@@ -1,0 +1,3 @@
+POSTGRES_USER=bafomet
+POSTGRES_PASSWORD=bafomet123
+POSTGRES_DB=bafomet_dev

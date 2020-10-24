@@ -55,9 +55,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+SESSION_COOKIE_SAMESITE = None
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+)
+CORS_ORIGIN_REGEX_WHITELIST = (
+    'localhost:3000',
+)
 ROOT_URLCONF = 'starterkit.urls'
 
 TEMPLATES = [

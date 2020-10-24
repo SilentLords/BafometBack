@@ -1,7 +1,8 @@
 # API Bafomet Backend
 
 ## Base url `http://bafomet.wellbe.club`
-
+### Token format
+ Token format in headers : 'Authorization': 'Bearer {Token}'
 ## Аунтефикация
 
 ### Регистрация
@@ -362,22 +363,42 @@ Request
 Response
 
     {
-      ''
+    "id": int,
+    "email": string,
+    "name": string,
+    "second_name": string,
+    "average_check": int?,
+    "frequently_visited_places": [
+      # В следующих обновлениях
+    ],
+    "favorite_places": [{
+      #не важно
+    }]
     }
+
 ### Получить избранные магазины пользователя
 Request
 
-    Method POST
-    api/v1/users/auth
+    Method get
+    api/v1/places/get_favourite/
+    Token in header
 Response
 
-    Access-token
+    # Тоже самое, что и в api/v1/places/place/
 
 ### Добавить магазин в избранное
 Request
-
+    
     Method POST
-    api/v1/users/auth
+    api/v1/places/add_to_favourite/
+    Token in header
+
+    {
+      '2gis_id' : string
+    }
 Response
 
-    Access-token    
+    {
+      'status' : bool,
+      'msg' : string
+    }

@@ -26,7 +26,7 @@ SECRET_KEY = '_2*^^tq)sbdmvx%bi46&*rhj5gas#^a8td%vo=x5qw1+=!x1$y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -60,10 +60,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000',
+    'http://localhost:3000',
 )
 CORS_ORIGIN_REGEX_WHITELIST = (
-    'localhost:3000',
+    'http://localhost:3000',
 )
 ROOT_URLCONF = 'starterkit.urls'
 

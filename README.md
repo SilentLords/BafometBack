@@ -9,7 +9,7 @@
 Request
 
     Method POST
-    api/v1/users/registrate/send_email/
+    api/v1/users/auth/registrate/send_email/
     {
       'email': string
     }
@@ -23,7 +23,7 @@ Response
 Request
 
     Method POST
-    api/v1/users/registrate/confirm_email/
+    api/v1/users/auth/registrate/confirm_email/
     {
       'email': string,
       'otp': string
@@ -38,7 +38,7 @@ Response
 Request
 
     Method POST
-    api/v1/users/registrate/me/
+    api/v1/users/auth/registrate/me/
     {
       'email': string,
       'name': string,
@@ -56,7 +56,7 @@ Response
 Request
 
     Method POST
-    /v1/users/auth/token/
+    api/v1/users/auth/token/
     {
       'email': string,
       'password': string
@@ -71,7 +71,7 @@ Response
 Request
 
     Method POST
-    /v1/users/auth/token/refresh/
+    api/v1/users/auth/token/refresh/
     {
       'refresh': string,
     }
@@ -88,7 +88,7 @@ Response
 Request
 
     Method POST
-    /v1/places/place/
+    api/v1/places/place/
     {
       # City_id or cords required
       'city_id': 'string', - not required
@@ -102,25 +102,273 @@ Response
 
     {
       'status': bool, 
-      'items': [{with }]
+      'items': [{
+            "address_name": "Ленина проспект, 46/2",
+            "contact_groups": [
+                {
+                    "contacts": [
+                        {
+                            "type": "phone",
+                            "text": "+7‒963‒018‒10‒04",
+                            "print_text": "+7‒963‒018‒10‒04",
+                            "value": "+79630181004"
+                        }
+                    ]
+                }
+            ],
+            "full_address_name": "Губаха, Ленина проспект, 46/2",
+            "id": "70000001042208522_4r6fg8G6G73H0H7J272H9772yjo5755942332172huvjvH19065GI4J5I2H0Aerkd9815802003318643JJH0JIJGJI029",
+            "name": "Шаверма №1",
+            "point": {
+                "lat": 58.836511,
+                "lon": 57.555528
+            },
+            "rubrics": [
+                {
+                    "alias": "kafe",
+                    "id": "161",
+                    "kind": "primary",
+                    "name": "Кафе",
+                    "parent_id": "2",
+                    "short_id": 161
+                },
+                {
+                    "alias": "uchastniki_proekta_sberryadom",
+                    "id": "112537",
+                    "kind": "additional",
+                    "name": "Участники проекта СберРядом",
+                    "parent_id": "969",
+                    "short_id": 112537
+                }
+            ],
+            "schedule": {
+                "Fri": {{
+            "address_name": "Ленина проспект, 46/2",
+            "contact_groups": [
+                {
+                    "contacts": [
+                        {
+                            "type": "phone",
+                            "text": "+7‒963‒018‒10‒04",
+                            "print_text": "+7‒963‒018‒10‒04",
+                            "value": "+79630181004"
+                        }
+                    ]
+                }
+            ],
+            "full_address_name": "Губаха, Ленина проспект, 46/2",
+            "id": "70000001042208522_4r6fg8G6G73H0H7J272H9772yjo5755942332172huvjvH19065GI4J5I2H0Aerkd9815802003318643JJH0JIJGJI029",
+            "name": "Шаверма №1",
+            "point": {
+                "lat": 58.836511,
+                "lon": 57.555528
+            },
+            "rubrics": [
+                {
+                    "alias": "kafe",
+                    "id": "161",
+                    "kind": "primary",
+                    "name": "Кафе",
+                    "parent_id": "2",
+                    "short_id": 161
+                },
+                {
+                    "alias": "uchastniki_proekta_sberryadom",
+                    "id": "112537",
+                    "kind": "additional",
+                    "name": "Участники проекта СберРядом",
+                    "parent_id": "969",
+                    "short_id": 112537
+                }
+            ],
+            "schedule": {
+                "Fri": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Mon": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Sat": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Sun": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Thu": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Tue": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Wed": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                }
+            },
+            "type": "branch"
+        },
+        {
+            "address_name": "Пугачёва, 25",
+            "contact_groups": [
+                {
+                    "contacts": [
+                        {
+                            "type": "phone",
+                            "text": "+7 (34271) 2‒58‒76",
+                            "print_text": "+7 (34271) 2‒58‒76",
+                            "value": "+73427125876"
+                        },
+                        {
+                            "type": "instagram",
+                            "text": "https://instagram.com/japonka_kungur",
+                            "value": "https://instagram.com/japonka_kungur",
+                            "url": "https://instagram.com/japonka_kungur"
+                        },
+                        {
+                            "type": "vkontakte",
+                            "text": "https://vk.com/yaponka_kyngyr",
+                            "value": "https://vk.com/yaponka_kyngyr",
+                            "url": "https://vk.com/yaponka_kyngyr"
+                        }
+                    ]
+                }
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Mon": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Sat": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Sun": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Thu": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Tue": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                },
+                "Wed": {
+                    "working_hours": [
+                        {
+                            "from": "10:00",
+                            "to": "22:30"
+                        }
+                    ]
+                }
+            },
+            "type": "branch"
+        },
+        {
+            "address_name": "Пугачёва, 25",
+            "contact_groups": [
+                {
+                    "contacts": [
+                        {
+                            "type": "phone",
+                            "text": "+7 (34271) 2‒58‒76",
+                            "print_text": "+7 (34271) 2‒58‒76",
+                            "value": "+73427125876"
+                        },
+                        {
+                            "type": "instagram",
+                            "text": "https://instagram.com/japonka_kungur",
+                            "value": "https://instagram.com/japonka_kungur",
+                            "url": "https://instagram.com/japonka_kungur"
+                        },
+                        {
+                            "type": "vkontakte",
+                            "text": "https://vk.com/yaponka_kyngyr",
+                            "value": "https://vk.com/yaponka_kyngyr",
+                            "url": "https://vk.com/yaponka_kyngyr"
+                        }
+                    ]
+                }]
     }
 
-### Поиск магазинов в городе
-Request
-
-    Method POST
-    /v1/users/auth
-Response
-
-    Access-token
 
 ## Работа с личным кабинетом
+### /me
+Request
+    
+    Method GET
+    api/v1/users/auth/me
+    Token in header
+Response
 
+    {
+      ''
+    }
 ### Получить избранные магазины пользователя
 Request
 
     Method POST
-    /v1/users/auth
+    api/v1/users/auth
 Response
 
     Access-token
@@ -129,7 +377,7 @@ Response
 Request
 
     Method POST
-    /v1/users/auth
+    api/v1/users/auth
 Response
 
     Access-token    

@@ -48,6 +48,7 @@ class PlacesView(APIView):
             if 'error' in req_json:
                 return Response({'status': False, 'msg': req_json['error']})
             else:
+                print(req_json)
                 return Response({'status': True, 'items': req_json['result']['items']})
 
         return Response({'status': False, 'msg': "City_id or cords are must be in request"})

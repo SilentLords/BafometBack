@@ -61,9 +61,11 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
+    'https://bafomet-map.vercel.app'
 )
 CORS_ORIGIN_REGEX_WHITELIST = (
     'http://localhost:3000',
+    'https://bafomet-map.vercel.app/'
 )
 ROOT_URLCONF = 'starterkit.urls'
 

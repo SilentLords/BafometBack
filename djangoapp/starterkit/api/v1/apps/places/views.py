@@ -132,3 +132,17 @@ class GetWatchList(APIView):
             return Response({'status': False, 'msg': req_json['error']})
         else:
             return Response({'status': True, 'items': req_json['result']['items']})
+
+
+
+class GetOnePlace(APIView):
+    permission_classes = (permissions.AllowAny, )
+
+    def post(self, request):
+        id_2gis = request.data['2gis_id']
+        req = r.get(f'https://catalog.api.2gis.com/3.0/items/byid?id={id_2gis}&key={API_2GIS_KEY}{PARAMS}')
+        req_json = json.loads(req.text)
+        if 'error' in req_json:
+            return Response({'status': False, 'msg': req_json['error']})
+        else:
+            return Response({'status': True, 'items': req_json['result']['items']})

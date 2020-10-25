@@ -76,6 +76,6 @@ class User(AbstractBaseUser):
 
 
 class EmailOTP(models.Model):
-    email = models.CharField(max_length=20)
+    email = models.CharField(max_length=100)
     otp_code = models.IntegerField()
     is_activated = models.BooleanField(default=False)

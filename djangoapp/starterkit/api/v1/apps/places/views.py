@@ -31,7 +31,8 @@ class PlacesView(APIView):
                 cords = request.data['cords']
                 query_string = f'?sort_point={cords[0]},{cords[1]}&'
                 for key in list(search_query.keys()):
-                    query_string += f'{key}={search_query[key]}&'
+                    if search_query[key]:
+                        query_string += f'{key}={search_query[key]}&'
                 req = r.get(f'https://catalog.api.2gis.com/3.0/items{query_string}&key={API_2GIS_KEY}{PARAMS}')
                 req_json = json.loads(req.text)
 
@@ -39,7 +40,8 @@ class PlacesView(APIView):
                 city_id = request.data['city_id']
                 query_string = f'?city_id={city_id}&'
                 for key in list(search_query.keys()):
-                    query_string += f'{key}={search_query[key]}&'
+                    if search_query[key]:
+                        query_string += f'{key}={search_query[key]}&'
                 req = r.get(f'https://catalog.api.2gis.com/3.0/items{query_string}&key={API_2GIS_KEY}')
                 req_json = json.loads(req.text)
 
